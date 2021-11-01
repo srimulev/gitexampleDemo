@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9a69dc2b-7fb7-43de-8682-ffdbd64f466a" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="gitexampledemoFlow" doc:id="0ea048e1-1d8f-4b6c-83f8-0a5dd5470773" >
+		<http:listener doc:name="Listener" doc:id="831c84d9-ce51-4bd9-8e5c-765d752f83a0" path="/ge" config-ref="HTTP_Listener_config"/>
+		<set-payload value='#["harsha"]' doc:name="Set Payload" doc:id="416fdd31-6133-45b0-9837-40f286f710b0" />
+		<set-variable value='#["vardhan"]' doc:name="Set Variable" doc:id="eb724051-5524-4631-8ced-e5bdbe85b2d0" variableName="var1"/>
+		<set-payload value="#[vars.var1]" doc:name="Set Payload" doc:id="a3990060-2819-4e06-b91e-a66ffc2d17c4" />
+	</flow>
+</mule>
